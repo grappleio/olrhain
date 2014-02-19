@@ -57,4 +57,8 @@ angular.module('mean.reports').controller('ReportsController', ['$scope', '$rout
             $scope.report = report;
         });
     };
+
+    $scope.availableBranchs = function(){
+        Branchs.list({}, function(branchs){ $scope.branchs = branchs;})
+    }
 }]);
