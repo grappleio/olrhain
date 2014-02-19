@@ -2,11 +2,11 @@
 
 var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
-    TwitterStrategy = require('passport-twitter').Strategy,
-    FacebookStrategy = require('passport-facebook').Strategy,
+   // TwitterStrategy = require('passport-twitter').Strategy,
+  //  FacebookStrategy = require('passport-facebook').Strategy,
     GitHubStrategy = require('passport-github').Strategy,
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-    LinkedinStrategy = require('passport-linkedin').Strategy,
+   // LinkedinStrategy = require('passport-linkedin').Strategy,
     User = mongoose.model('User'),
     config = require('./config');
 
@@ -56,7 +56,7 @@ module.exports = function(passport) {
     ));
 
     // Use twitter strategy
-    passport.use(new TwitterStrategy({
+   /* passport.use(new TwitterStrategy({
             consumerKey: config.twitter.clientID,
             consumerSecret: config.twitter.clientSecret,
             callbackURL: config.twitter.callbackURL
@@ -84,10 +84,10 @@ module.exports = function(passport) {
                 }
             });
         }
-    ));
+    ));*/
 
     // Use facebook strategy
-    passport.use(new FacebookStrategy({
+   /* passport.use(new FacebookStrategy({
             clientID: config.facebook.clientID,
             clientSecret: config.facebook.clientSecret,
             callbackURL: config.facebook.callbackURL
@@ -116,7 +116,7 @@ module.exports = function(passport) {
                 }
             });
         }
-    ));
+    ));*/
 
     // Use github strategy
     passport.use(new GitHubStrategy({
@@ -177,7 +177,7 @@ module.exports = function(passport) {
     ));
 
     // use linkedin strategy
-    passport.use(new LinkedinStrategy({
+   /* passport.use(new LinkedinStrategy({
             consumerKey: config.linkedin.clientID,
             consumerSecret: config.linkedin.clientSecret,
             callbackURL: config.linkedin.callbackURL,
@@ -203,5 +203,5 @@ module.exports = function(passport) {
                 }
             });
         }
-    ));
+    ));*/
 };

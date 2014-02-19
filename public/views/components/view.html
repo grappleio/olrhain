@@ -1,0 +1,14 @@
+<section data-ng-controller="ComponentsController" data-ng-init="findOne()">
+    <span>{{components.created | date:'medium'}}</span> /
+    <span>{{components.user.name}}</span>
+    <h2>{{components.title}}</h2>
+    <div data-ng-show="global.user._id == components.user._id">
+        <a class="btn" href="/#!/components/{{components._id}}/edit">
+        	<i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+    <div>{{components.content}}</div>
+</section>

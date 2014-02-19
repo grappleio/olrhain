@@ -8,9 +8,9 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Article Schema
+ * Step Schema
  */
-var ArticleSchema = new Schema({
+var StepSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -20,9 +20,12 @@ var ArticleSchema = new Schema({
         default: '',
         trim: true
     },
-    content: {
+    seq: {
+        type: Number
+    },
+    desc : {
         type: String,
-        default: '',
+        default : '',
         trim: true
     },
     user: {
@@ -34,17 +37,17 @@ var ArticleSchema = new Schema({
 /**
  * Validations
  */
-ArticleSchema.path('title').validate(function(title) {
+StepSchema.path('title').validate(function(title) {
     return title.length;
 }, 'Title cannot be blank');
 
 /**
  * Statics
  */
-ArticleSchema.statics.load = function(id, cb) {
+StepSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).populate('user', 'name username').exec(cb);
 };
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Step', StepSchema);

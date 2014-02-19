@@ -1,0 +1,12 @@
+<section data-ng-controller="HeadersController" data-ng-init="find()">
+	<ul class="headers unstyled">
+		<li data-ng-repeat="header in headers">
+			<span>{{header.created | date:'medium'}}</span> /
+			<span>{{header.
+			}}</span>
+			<h2><a data-ng-href="#!/headers/{{header._id}}">{{header.title}}</a></h2>
+			<div>{{header.content}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!headers || headers.length">No headers yet. <br> Why don't you <a href="/#!/headers/create">Create One</a>?</h1>
+</section>

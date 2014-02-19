@@ -1,0 +1,11 @@
+<section data-ng-controller="ComponentsController" data-ng-init="find()">
+	<ul class="components unstyled">
+		<li data-ng-repeat="components in components">
+			<span>{{components.created | date:'medium'}}</span> /
+			<span>{{components.user.name}}</span>
+			<h2><a data-ng-href="#!/components/{{components._id}}">{{components.title}}</a></h2>
+			<div>{{components.content}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!components || components.length">No components yet. <br> Why don't you <a href="/#!/components/create">Create One</a>?</h1>
+</section>

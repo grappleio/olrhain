@@ -1,0 +1,11 @@
+<section data-ng-controller="ReportsController" data-ng-init="find()">
+	<ul class="reports unstyled">
+		<li data-ng-repeat="report in reports">
+			<span>{{report.created | date:'medium'}}</span> /
+			<span>{{report.user.name}}</span>
+			<h2><a data-ng-href="#!/reports/{{report._id}}">{{report.title}}</a></h2>
+			<div>{{report.content}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!reports || reports.length">No reports yet. <br> Why don't you <a href="/#!/reports/create">Create One</a>?</h1>
+</section>

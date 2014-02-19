@@ -4,97 +4,97 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Article = mongoose.model('Article'),
+    Step = mongoose.model('Step'),
     _ = require('lodash');
 
 
 /**
- * Find article by id
+ * Find step by id
  */
-exports.article = function(req, res, next, id) {
-    Article.load(id, function(err, article) {
+exports.step = function(req, res, next, id) {
+    Step.load(id, function(err, step) {
         if (err) return next(err);
-        if (!article) return next(new Error('Failed to load article ' + id));
-        req.article = article;
+        if (!step) return next(new Error('Failed to load step ' + id));
+        req.step = step;
         next();
     });
 };
 
 /**
- * Create an article
+ * Create an step
  */
 exports.create = function(req, res) {
-    var article = new Article(req.body);
-    article.user = req.user;
+    var step = new Step(req.body);
+    step.user = req.user;
 
-    article.save(function(err) {
+    step.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                step: step
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(step);
         }
     });
 };
 
 /**
- * Update an article
+ * Update an step
  */
 exports.update = function(req, res) {
-    var article = req.article;
+    var step = req.step;
 
-    article = _.extend(article, req.body);
+    step = _.extend(step, req.body);
 
-    article.save(function(err) {
+    step.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                step: step
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(step);
         }
     });
 };
 
 /**
- * Delete an article
+ * Delete an step
  */
 exports.destroy = function(req, res) {
-    var article = req.article;
+    var step = req.step;
 
-    article.remove(function(err) {
+    step.remove(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                step: step
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(step);
         }
     });
 };
 
 /**
- * Show an article
+ * Show an step
  */
 exports.show = function(req, res) {
-    res.jsonp(req.article);
+    res.jsonp(req.step);
 };
 
 /**
- * List of Articles
+ * List of Steps
  */
 exports.all = function(req, res) {
-    Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
+    Step.find().sort('-created').populate('user', 'name username').exec(function(err, steps) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(articles);
+            res.jsonp(steps);
         }
     });
 };

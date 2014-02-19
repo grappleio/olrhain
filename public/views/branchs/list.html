@@ -1,0 +1,11 @@
+<section data-ng-controller="BranchsController" data-ng-init="find()">
+	<ul class="branchs unstyled">
+		<li data-ng-repeat="branch in branchs">
+			<span>{{branch.created | date:'medium'}}</span> /
+			<span>{{branch.user.name}}</span>
+			<h2><a data-ng-href="#!/branchs/{{branch._id}}">{{branch.title}}</a></h2>
+			<div>{{branch.content}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!branchs || branchs.length">No branchs yet. <br> Why don't you <a href="/#!/branchs/create">Create One</a>?</h1>
+</section>

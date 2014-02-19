@@ -1,0 +1,11 @@
+<section data-ng-controller="TestsController" data-ng-init="find()">
+	<ul class="tests unstyled">
+		<li data-ng-repeat="test in tests">
+			<span>{{test.created | date:'medium'}}</span> /
+			<span>{{test.user.name}}</span>
+			<h2><a data-ng-href="#!/tests/{{test._id}}">{{test.title}}</a></h2>
+			<div>{{test.content}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!tests || tests.length">No tests yet. <br> Why don't you <a href="/#!/tests/create">Create One</a>?</h1>
+</section>
