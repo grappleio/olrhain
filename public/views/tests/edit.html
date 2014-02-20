@@ -7,10 +7,32 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="content" class="col-md-2 control-label">Content</label>
+			<label for="content" class="col-md-2 control-label">Contents</label>
+			<ul>
+				<li ng-repeat='header in headers'><span ng-hide="editing" ng-click="editing=true"> {{header.name}} </span>
+					<ul ng-show="header.steps && header.steps.length">
+						<li ng-repeat="step in header.steps"> 
+							<span ng-hide="editing" ng-click="editing=true"> {{step.seq}} - {{step.desc}}</span>
+							<form ng-show="editing" ng-submit="editing=false">
+								<label> Sequence </label>
+								<input type="text" ng-model="step.seq" placeholder="1" ng-required />
+								<label> Description </label>
+								<input type="textarea" ng-model="step.desc" placeholder="1" ng-required />
+								<button class="btn" type="submit">Save </button>
+						</li>
+						<div class="col-md-10">
+							<input type="text" class="form-control" data-ng-model="newStep.seq" placeholder="Steps" required>
+							<input type="text" class="form-control" data-ng-model="newStep.desc" placeholder="Steps" required>
+							<button ng-click="addStep()">Add Step</button>
+						</div>
+					</ul>
+					
+				</li>
+			</ul>
 			<div class="col-md-10">
-				<textarea data-ng-model="test.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
-			</div>
+						<input type="text" class="form-control" data-ng-model="newHeader.name" id="headers" placeholder="Headers" required>
+						<button ng-click="addHeader()">Add Header</button>
+					</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">

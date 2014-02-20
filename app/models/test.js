@@ -25,10 +25,22 @@ var TestSchema = new Schema({
         default: '',
         trim: true
     },
+    component : { type: Schema.ObjectId, ref : 'Component'},
+    branch : { type : Schema.ObjectId, ref : 'Branch'},
     headers : [{
-        type : Schema.ObjectId,
-        ref : 'Header'
-    }]
+        name : { type: String },
+        status: { type: String, enum : ['Pass', 'Fail', 'NotTested'] },
+        steps : [{
+                    seq : { type: Number},
+                    desc : { type : String },
+                    status : { type: String, enum : ['Pass', 'Fail', 'NotTested']}
+                }]
+    }],
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
+
 });
 
 /**
@@ -44,7 +56,7 @@ TestSchema.path('title').validate(function(title) {
 TestSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('headers', 'name steps').exec(cb);
+    }).populate('user', 'name username').exec(cb);
 };
 
 mongoose.model('Test', TestSchema);

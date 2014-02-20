@@ -24,8 +24,7 @@ var BranchSchema = new Schema({
         type: String,
         default: '',
         trim: true
-    },
-    reports : [{ type: Schema.ObjectId, ref : 'Report'}]
+    }
 });
 
 /**

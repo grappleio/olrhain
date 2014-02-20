@@ -2,9 +2,8 @@
 	<ul class="steps unstyled">
 		<li data-ng-repeat="step in steps">
 			<span>{{step.created | date:'medium'}}</span> /
-			<span>{{step.user.name}}</span>
 			<h2><a data-ng-href="#!/steps/{{step._id}}">{{step.title}}</a></h2>
-			<div>{{step.content}}</div>
+			<div>{{step.desc}}</div>
 		</li>
 	</ul>
 	<h1 data-ng-hide="!steps || steps.length">No steps yet. <br> Why don't you <a href="/#!/steps/create">Create One</a>?</h1>

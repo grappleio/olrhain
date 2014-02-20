@@ -2,7 +2,7 @@
     <span>{{test.created | date:'medium'}}</span> /
     <span>{{test.user.name}}</span>
     <h2>{{test.title}}</h2>
-    <div data-ng-show="global.user._id == test.user._id">
+    <div >
         <a class="btn" href="/#!/tests/{{test._id}}/edit">
         	<i class="glyphicon glyphicon-edit"></i>
         </a>
@@ -10,5 +10,44 @@
             <i class="glyphicon glyphicon-trash"></i>
         </a>
     </div>
-    <div>{{test.content}}</div>
+    <div>{{test.desc}}</div>
+    <h3>Contents</h3>
+        <div class="row" ng-repeat="header in test.headers">
+        <div class="col-lg-2"></div>
+            <div class="col-lg-8" >
+                
+                 <div contentEditable="true" ng-model="header.name">{{header.name}}</div>
+
+                <div class="row" ng-repeat="step in header.steps" >
+                    <div class="col-lg-2">
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <div contentEditable="true" ng-model="step.seq">{{step.seq}}</div> - <div contentEditable="true" ng-model="step.desc">{{step.desc}}</div>
+                    </div>
+                </div>
+
+                <form class="form-inline" >
+                <div class="form-group">
+                    <input type="text" class="form-control" data-ng-model="stepNew.seq" placeholder="1" ng-required />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" data-ng-model="stepNew.desc" placeholder="Step" ng-required />
+                </div>
+                <div class="form-group">
+                    <button ng-click="addStep(header,stepNew)">Add Step</button>
+                </div>
+                 </form>
+
+            </div>
+
+          
+        </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" data-ng-model="newHeader.name" id="headers" placeholder="{{header.name}}" ng-required />
+            <button ng-click="addHeader()">Add Header</button>
+        </div>
+    </div>
 </section>

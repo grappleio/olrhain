@@ -58,9 +58,5 @@ angular.module('mean.headers').controller('HeadersController', ['$scope', '$rout
         });
     };
     
-    $http.get('phones/phones.json').success(function(data) {
-        $scope.all = data;
-    });
-
-    };
+  
 }]);

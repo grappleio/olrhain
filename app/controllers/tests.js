@@ -88,7 +88,7 @@ exports.show = function(req, res) {
  * List of Tests
  */
 exports.all = function(req, res) {
-    Test.find().sort('-created').populate('user', 'name username').exec(function(err, tests) {
+    Test.find().sort('-created').populate('user', 'name username').populate('branch','title').populate('component','name').exec(function(err, tests) {
         if (err) {
             res.render('error', {
                 status: 500
