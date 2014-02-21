@@ -7,6 +7,10 @@ angular.module('mean.tests').factory('Tests', ['$resource', function($resource) 
     }, {
         update: {
             method: 'PUT'
+        },
+        remove: {
+        	method: 'DELETE'
         }
+
     });
 }]);

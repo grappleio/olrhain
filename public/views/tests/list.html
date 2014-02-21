@@ -1,11 +1,28 @@
 <section data-ng-controller="TestsController" data-ng-init="find()">
-	<ul class="tests unstyled">
-		<li data-ng-repeat="test in tests">
-			<span>{{test.created | date:'medium'}}</span>
-			<h2><a data-ng-href="#!/tests/{{test._id}}">{{test.title}}</a></h2>
+	<div class="row">
+		<div class="col-lg-8">
+			<h3>
+				Current Available Tests 
+				<div class="pull-right">
+					<a href="/#!/tests/create"><i class="fa fa-plus"></i></a>
+				</div>
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8">
+			<ul class="list-group">
+				<li class="list-group-item" data-ng-repeat="test in tests">
+					<a data-ng-href="#!/tests/{{test._id}}">{{test.title}}</a> 
+					<div class="pull-right">
+						<a href="/#!/tests/:{{test._id}}"><i class="fa fa-edit fa-fw"></i></a>&nbsp;
+						<a ng-click="remove(test);"><i class="fa fa-trash-o fa-fw"></i></a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-			<div>{{test.headers}}</div>
-		</li>
-	</ul>
 	<h1 data-ng-hide="!tests || tests.length">No tests yet. <br> Why don't you <a href="/#!/tests/create">Create One</a>?</h1>
+
 </section>

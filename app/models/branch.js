@@ -15,12 +15,12 @@ var BranchSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    title: {
+    name: {
         type: String,
         default: '',
         trim: true
     },
-    content: {
+    hash: {
         type: String,
         default: '',
         trim: true

@@ -22,6 +22,7 @@ angular.module('mean.tests').controller('TestsController', ['$scope', '$routePar
     
     $scope.remove = function(test) {
         if (test) {
+            
             test.$remove();
 
             for (var i in $scope.tests) {
@@ -50,16 +51,16 @@ angular.module('mean.tests').controller('TestsController', ['$scope', '$routePar
 
     $scope.$watch('headers', function(n,o){ 
 
-        var test = $scope.test;
-      /*  if (!test.updated) {
+       /* var test = $scope.test;
+        if (!test.updated) {
             test.updated = [];
         }
-        //test.updated.push(new Date().getTime());*/
+        //test.updated.push(new Date().getTime());
 
         test.$update(function() {
             $location.path('tests/' + test._id);
-        });
-    }) ;
+        });*/
+    });
 
     $scope.find = function() {
         Tests.query(function(tests) {
